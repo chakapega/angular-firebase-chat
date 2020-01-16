@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/normalize/normalize.scss";
+@import "./assets/font/font.scss";
+
+body {
+  font-family: "Roboto", sans-serif;
+}

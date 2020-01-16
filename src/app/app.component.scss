@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #44394b;
+
+  .app-title {
+    font-size: 25px;
+    color: #ffffff;
+    margin-left: 50px;
+  }
+}
