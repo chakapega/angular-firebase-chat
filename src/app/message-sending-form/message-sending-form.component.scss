@@ -1,0 +1,20 @@
+.message-sending-container {
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  #message-sending-textarea {
+    width: 70%;
+
+    &::placeholder {
+      padding-top: 80px;
+      padding-left: 120px;
+    }
+  }
+  .message-sending-button {
+    width: 130px;
+    height: 60px;
+    cursor: pointer;
+  }
+}

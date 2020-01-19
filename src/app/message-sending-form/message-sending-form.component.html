@@ -1,4 +1,5 @@
-<form action="" class="message-sending-form">
-  <input type="text" class="message-sending-input" placeholder="Write a text to send a message">
-  <button type="button" class="message-sending-button">Send message</button>
-</form>
+<div class="message-sending-container">
+  <textarea name="message" [(ngModel)]="message" id="message-sending-textarea" cols="30" rows="10"
+    placeholder="Write a text to send a message"></textarea>
+  <button type="button" class="message-sending-button" (click)="sendMessage($event)">Send message</button>
+</div>
