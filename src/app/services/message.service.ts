@@ -36,17 +36,15 @@ export class MessageService {
   }
 
   private getMessages(): void {
-    const messages: Array<object> = [];
-
     firestore
       .collection('messages')
       .orderBy('messageTimeStamp', 'asc')
-      .get()
-      .then(querySnapshot => {
+      .onSnapshot(querySnapshot => {
+        const messages: Array<object> = [];
+
         querySnapshot.forEach(doc => {
           messages.push(doc.data());
         });
-
         this.setArrayOfMessages(messages);
       });
   }
