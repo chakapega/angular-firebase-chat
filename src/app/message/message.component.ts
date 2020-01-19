@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Message } from '../models/message.model';
+import { Message } from '../shared/interfaces';
 
 @Component({
   selector: 'app-message',
@@ -11,9 +11,6 @@ export class MessageComponent implements OnInit {
   constructor() {}
 
   @Input() message: Message;
-
-  userEmail: string;
-  userMessage: string;
 
   ngOnInit() {}
 }

@@ -24,7 +24,8 @@ export class MessageService {
       .doc()
       .set({
         userEmail: email,
-        userMessage: message
+        userMessage: message,
+        messageTimeStamp: this.getTimeStamp()
       })
       .then(() => {
         console.log('Document successfully written!');
@@ -39,13 +40,22 @@ export class MessageService {
 
     firestore
       .collection('messages')
+      .orderBy('messageTimeStamp', 'asc')
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           messages.push(doc.data());
         });
 
-        this.setArrayOfMessages(messages.reverse());
+        this.setArrayOfMessages(messages);
       });
+  }
+
+  private getTimeStamp() {
+    const currentDate = new Date();
+    const [, , dayOfTheMonth, year, time] = currentDate.toString().split(' ');
+    const month = currentDate.getMonth() + 1;
+
+    return `${dayOfTheMonth}/${month}/${year} ${time}`;
   }
 }
