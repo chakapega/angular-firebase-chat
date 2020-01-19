@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { firestore } from '../../firebase/firebase';
+
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-message-box',
@@ -7,16 +8,17 @@ import { firestore } from '../../firebase/firebase';
   styleUrls: ['./message-box.component.scss']
 })
 export class MessageBoxComponent implements OnInit {
-  constructor() {}
+  constructor(private messageService: MessageService) {}
+
+  public arrayOfMessages: Array<object>;
 
   ngOnInit() {
-    firestore
-      .collection('messages')
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach(doc => {
-          // console.log(doc.data());
-        });
-      });
+    this.messageService.getArrayOfMessages().subscribe(arrayOfMessages => {
+      this.setArrayOfMessages(arrayOfMessages);
+    });
+  }
+
+  setArrayOfMessages(arrayOfMessages) {
+    this.arrayOfMessages = arrayOfMessages;
   }
 }

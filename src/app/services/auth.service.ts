@@ -3,13 +3,25 @@ import { Observable, Subject } from 'rxjs';
 
 import { auth, googleAuthProvider } from '../../firebase/firebase';
 
+import { User } from '../shared/interfaces';
+
 @Injectable()
 export class AuthService {
-  // user: User;
-  // private user: Observable<User>;
-  private subject = new Subject<object>();
+  constructor() {
+    auth.onAuthStateChanged(result => {
+      if (result) {
+        const { uid, email } = result;
 
-  public setUser(user: object): void {
+        this.setUser({ uid, email });
+      } else {
+        this.setUser({ uid: '', email: '' });
+      }
+    });
+  }
+
+  private subject = new Subject<User>();
+
+  public setUser(user: User): void {
     this.subject.next(user);
   }
 
@@ -20,33 +32,12 @@ export class AuthService {
   signIn() {
     auth.signInWithPopup(googleAuthProvider).then(result => {
       const { uid, email } = result.user;
-      // console.log(uid, email);
-      const user = {
-        uid,
-        email
-      };
 
-      this.setUser(user);
+      this.setUser({ uid, email });
     });
   }
 
   signOut() {
     auth.signOut().then(() => {});
-  }
-
-  addOnAuthStateChangedHandler() {
-    auth.onAuthStateChanged(result => {
-      if (result) {
-        const { uid, email } = result;
-        const user = {
-          uid,
-          email
-        };
-
-        this.setUser(user);
-      } else {
-        this.setUser({ uid: '', email: '' });
-      }
-    });
   }
 }
