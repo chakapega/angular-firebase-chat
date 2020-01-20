@@ -1,10 +1,10 @@
 export interface User {
   uid: string;
-  displayName: string;
+  email: string;
   photoURL: string;
 }
 export interface Message {
-  displayName: string;
+  email: string;
   message: string;
   id: string;
 }

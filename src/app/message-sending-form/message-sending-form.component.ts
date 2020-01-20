@@ -12,7 +12,7 @@ import { User } from '../shared/interfaces';
 export class MessageSendingFormComponent implements OnInit {
   message: string;
   uid: string;
-  displayName: string;
+  email: string;
   messageSendingInput: any;
   placeholderText: string;
 
@@ -29,7 +29,7 @@ export class MessageSendingFormComponent implements OnInit {
   private sendMessage() {
     if (this.uid && this.message) {
       if (this.message.trim()) {
-        this.messagesService.sendMessage(this.message, this.displayName);
+        this.messagesService.sendMessage(this.message, this.email);
         this.message = '';
       }
     }
@@ -48,7 +48,7 @@ export class MessageSendingFormComponent implements OnInit {
 
   private setUser(user: User) {
     this.uid = user.uid;
-    this.displayName = user.displayName;
+    this.email = user.email;
 
     if (user.uid) {
       this.placeholderText = 'Write a text to send a message';

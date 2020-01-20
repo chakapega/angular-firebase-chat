@@ -1,7 +1,7 @@
 <div class="authentication-container">
   <div *ngIf="isAutorized" class="user-info-container">
     <img *ngIf="photoURL" src="{{ photoURL }}" alt="user-photo" class="user-photo">
-    <span class="user-name">{{ displayName }}</span>
+    <span class="user-name">{{ email }}</span>
   </div>
   <button class="authentication-button"
     (click)="authenticationHandler()">{{ isAutorized ? 'Sign out' : 'Google sign in' }}</button>

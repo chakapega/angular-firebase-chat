@@ -13,7 +13,7 @@ export class MessagesService {
     this.getMessages();
   }
 
-  private displayName: string = '';
+  private email: string = '';
   private subject = new Subject<Array<object>>();
 
   public setArrayOfMessages(messages: Array<object>): void {
@@ -24,14 +24,14 @@ export class MessagesService {
     return this.subject.asObservable();
   }
 
-  public sendMessage(message, displayName): void {
+  public sendMessage(message, email): void {
     firestore
       .collection('messages')
       .doc()
       .set({
-        displayName: displayName,
-        userMessage: message,
-        messageTimeStamp: this.getTimeStamp()
+        email: email,
+        message: message,
+        timeStamp: this.getTimeStamp()
       })
       .then(() => {
         console.log('Document successfully written!');
@@ -41,8 +41,8 @@ export class MessagesService {
       });
   }
 
-  public removeMessage(id, displayName) {
-    if (this.displayName === displayName) {
+  public removeMessage(id, email) {
+    if (this.email === email) {
       firestore
         .collection('messages')
         .doc(id)
@@ -59,7 +59,7 @@ export class MessagesService {
   private getMessages(): void {
     firestore
       .collection('messages')
-      .orderBy('messageTimeStamp', 'asc')
+      .orderBy('timeStamp', 'asc')
       .onSnapshot(querySnapshot => {
         const messages: Array<object> = [];
 
@@ -82,10 +82,10 @@ export class MessagesService {
   }
 
   private setUser(user) {
-    if (user.uid) {
-      this.displayName = user.displayName;
+    if (user.email) {
+      this.email = user.email;
     } else {
-      this.displayName = '';
+      this.email = '';
     }
   }
 }
