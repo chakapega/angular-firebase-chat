@@ -5,11 +5,11 @@ import { MessagesService } from '../services/messages.service';
 import { User } from '../shared/interfaces';
 
 @Component({
-  selector: 'app-message-sending-form',
-  templateUrl: './message-sending-form.component.html',
-  styleUrls: ['./message-sending-form.component.scss']
+  selector: 'app-message-sending',
+  templateUrl: './message-sending.component.html',
+  styleUrls: ['./message-sending.component.scss']
 })
-export class MessageSendingFormComponent implements OnInit {
+export class MessageSendingComponent implements OnInit {
   message: string;
   uid: string;
   email: string;

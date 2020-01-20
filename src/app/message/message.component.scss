@@ -1,8 +1,7 @@
 .message-container {
   position: relative;
   display: flex;
-  height: auto;
-  min-height: 80px;
+  height: 100px;
   width: 90%;
   min-width: 400px;
   background-color: #eeeeee;
@@ -17,23 +16,25 @@
     flex-direction: column;
     width: 22%;
     height: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+    overflow: hidden;
 
     .user-email {
       color: #364645;
       font-weight: bold;
-      margin-bottom: 15px;
       overflow-wrap: break-word;
+      padding: 8px;
     }
     .time-stamp {
       color: #555555;
       font-style: italic;
+      padding: 8px;
     }
   }
   .message {
     position: absolute;
-    width: 78%;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    width: 74%;
     height: 100%;
     left: 22%;
     background-color: #ffffff;
@@ -42,11 +43,13 @@
   }
   .message-control-buttons-container {
     position: absolute;
+    width: 4%;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     height: 100%;
-    right: 6px;
 
     .message-control-button {
       height: 28px;
