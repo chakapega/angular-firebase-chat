@@ -14,6 +14,7 @@ export class MessageSendingFormComponent implements OnInit {
   uid: string;
   displayName: string;
   messageSendingInput: any;
+  placeholderText: string;
 
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
@@ -48,5 +49,11 @@ export class MessageSendingFormComponent implements OnInit {
   private setUser(user: User) {
     this.uid = user.uid;
     this.displayName = user.displayName;
+
+    if (user.uid) {
+      this.placeholderText = 'Write a text to send a message';
+    } else {
+      this.placeholderText = 'Sign in to write messages';
+    }
   }
 }

@@ -1,5 +1,5 @@
 <div class="message-sending-container">
-  <input name="message" [(ngModel)]="message" placeholder="Write a text to send a message" type="text"
+  <input name="message" [disabled]="!uid" [(ngModel)]="message" [placeholder]="placeholderText" type="text"
     id="message-sending-input" (keypress)="keyPressHandler($event)">
   <button type="button" class="message-sending-button" (click)="clickHandler($event)">Send message</button>
 </div>

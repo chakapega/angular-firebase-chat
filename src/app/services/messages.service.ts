@@ -2,12 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { firestore } from '../../firebase/firebase';
 
+import { AuthService } from './auth.service';
+
 @Injectable()
 export class MessagesService {
-  constructor() {
+  constructor(private authService: AuthService) {
+    this.authService.getUser().subscribe(user => {
+      this.setUser(user);
+    });
     this.getMessages();
   }
 
+  private displayName: string = '';
   private subject = new Subject<Array<object>>();
 
   public setArrayOfMessages(messages: Array<object>): void {
@@ -35,6 +41,21 @@ export class MessagesService {
       });
   }
 
+  public removeMessage(id, displayName) {
+    if (this.displayName === displayName) {
+      firestore
+        .collection('messages')
+        .doc(id)
+        .delete()
+        .then(function() {
+          console.log('Document successfully deleted!');
+        })
+        .catch(function(error) {
+          console.error('Error removing document: ', error);
+        });
+    }
+  }
+
   private getMessages(): void {
     firestore
       .collection('messages')
@@ -58,5 +79,13 @@ export class MessagesService {
     const month = currentDate.getMonth() + 1;
 
     return `${dayOfTheMonth}/${month}/${year} ${time}`;
+  }
+
+  private setUser(user) {
+    if (user.uid) {
+      this.displayName = user.displayName;
+    } else {
+      this.displayName = '';
+    }
   }
 }

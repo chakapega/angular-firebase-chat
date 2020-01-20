@@ -5,7 +5,7 @@
   </div>
   <span class="user-message">{{ message.userMessage }}</span>
   <div class="message-control-buttons-container">
-    <button type="button" class="message-control-button edit-message-button" title="edit message"></button>
-    <button type="button" class="message-control-button remove-message-button" title="remove message"></button>
+    <button type="button" class="message-control-button edit-message-button" title="edit message" (click)="editMessage()"></button>
+    <button type="button" class="message-control-button remove-message-button" title="remove message" (click)="removeMessage()"></button>
   </div>
 </div>

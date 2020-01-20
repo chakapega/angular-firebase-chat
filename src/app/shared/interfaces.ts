@@ -6,4 +6,5 @@ export interface User {
 export interface Message {
   displayName: string;
   message: string;
+  id: string;
 }
