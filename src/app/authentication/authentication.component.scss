@@ -3,9 +3,19 @@
   align-items: center;
   margin-right: 50px;
 
-  .user-info {
-    color: #ffffff;
+  .user-info-container {
+    display: flex;
+    align-items: center;
     margin-right: 30px;
+
+    .user-photo {
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+    }
+    .user-name {
+      color: #ffffff;
+    }
   }
   .authentication-button {
     width: 120px;
@@ -17,6 +27,7 @@
     cursor: pointer;
 
     &:hover {
+      background-color: #96a7a0;
       border: 1px solid rgba(255, 255, 255, 0.7);
     }
   }

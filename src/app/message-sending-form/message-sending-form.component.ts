@@ -13,7 +13,7 @@ export class MessageSendingFormComponent implements OnInit {
   message: string;
   uid: string;
   displayName: string;
-  messageSendingInput: Element;
+  messageSendingInput: any;
 
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 

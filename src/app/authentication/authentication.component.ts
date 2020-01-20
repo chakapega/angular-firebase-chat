@@ -8,10 +8,11 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
+  constructor(private authService: AuthService) {}
+
   private isAutorized: boolean = false;
   private displayName: string = '';
-
-  constructor(private authService: AuthService) {}
+  private photoURL: string = '';
 
   public ngOnInit() {
     this.authService.getUser().subscribe(user => {
@@ -39,9 +40,11 @@ export class AuthenticationComponent implements OnInit {
     if (user.uid) {
       this.isAutorized = true;
       this.displayName = user.displayName;
+      this.photoURL = user.photoURL;
     } else {
       this.isAutorized = false;
       this.displayName = '';
+      this.photoURL = '';
     }
   }
 }
