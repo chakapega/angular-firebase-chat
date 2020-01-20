@@ -1,5 +1,5 @@
 <div class="authentication-container">
-  <div class="user-info-container">
+  <div *ngIf="isAutorized" class="user-info-container">
     <img *ngIf="photoURL" src="{{ photoURL }}" alt="user-photo" class="user-photo">
     <span class="user-name">{{ displayName }}</span>
   </div>

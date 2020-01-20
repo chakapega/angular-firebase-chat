@@ -40,4 +40,29 @@
     padding: 10px;
     box-sizing: border-box;
   }
+  .message-control-buttons-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    right: 6px;
+
+    .message-control-button {
+      height: 28px;
+      width: 28px;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-size: cover;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    .edit-message-button {
+      background-image: url(../../assets/images/edit-message.svg);
+    }
+    .remove-message-button {
+      background-image: url(../../assets/images/remove-message.svg);
+    }
+  }
 }

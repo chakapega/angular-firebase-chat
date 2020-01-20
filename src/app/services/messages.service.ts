@@ -43,7 +43,10 @@ export class MessagesService {
         const messages: Array<object> = [];
 
         querySnapshot.forEach(doc => {
-          messages.push(doc.data());
+          const message = doc.data();
+
+          message.id = doc.id;
+          messages.push(message);
         });
         this.setArrayOfMessages(messages);
       });

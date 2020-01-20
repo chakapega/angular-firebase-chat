@@ -1,7 +1,11 @@
-<div class="message-container">
+<div id={{message.id}} class="message-container">
   <div class="message-info-container">
     <span class="user-display-name">{{ message.displayName }}</span>
     <span class="message-time-stamp">{{ message.messageTimeStamp }}</span>
   </div>
   <span class="user-message">{{ message.userMessage }}</span>
+  <div class="message-control-buttons-container">
+    <button type="button" class="message-control-button edit-message-button" title="edit message"></button>
+    <button type="button" class="message-control-button remove-message-button" title="remove message"></button>
+  </div>
 </div>
