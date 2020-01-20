@@ -14,11 +14,22 @@
     padding: 10px;
     box-sizing: border-box;
     outline: none;
+    background-color: #e3eae8;
   }
   .message-sending-button {
     width: 16%;
     height: 100%;
     box-sizing: border-box;
+    border: none;
+    color: #364645;
+    font-size: 19px;
+    background-color: #a1b1ac;
+    transition: all 0.3s linear;
+    font-weight: bold;
     cursor: pointer;
+
+    &:hover {
+      background-color: #859690;
+    }
   }
 }

@@ -2,5 +2,13 @@
   width: 120px;
   height: 30px;
   margin-right: 50px;
+  color: #ffffff;
+  background-color: #8b9b95;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s linear;
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
 }
