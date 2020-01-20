@@ -1,20 +1,24 @@
 .message-sending-container {
-  width: 800px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 15%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 
   #message-sending-textarea {
-    width: 70%;
-
-    &::placeholder {
-      padding-top: 80px;
-      padding-left: 120px;
-    }
+    width: 84%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
   }
   .message-sending-button {
-    width: 130px;
-    height: 60px;
+    width: 16%;
+    height: 100%;
+    box-sizing: border-box;
     cursor: pointer;
   }
 }

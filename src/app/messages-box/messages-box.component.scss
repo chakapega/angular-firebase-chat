@@ -1,5 +1,8 @@
 .messages-box {
-  width: 800px;
-  height: 600px;
-  overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 84%;
+  height: 85%;
+  overflow-y: auto;
 }
