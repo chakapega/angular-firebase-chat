@@ -1,8 +1,8 @@
 export interface User {
   uid: string;
-  email: string;
+  displayName: string;
 }
 export interface Message {
-  email: string;
+  displayName: string;
   message: string;
 }

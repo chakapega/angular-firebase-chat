@@ -2,12 +2,13 @@
   position: relative;
   display: flex;
   height: auto;
-  min-height: 90px;
+  min-height: 80px;
   width: 80%;
   min-width: 400px;
   background-color: #eeeeee;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.3);
   margin-bottom: 15px;
+  margin-top: 15px;
   margin-left: 30px;
 
   .message-info-container {
@@ -19,7 +20,7 @@
     padding: 10px;
     box-sizing: border-box;
 
-    .user-email {
+    .user-display-name {
       color: #364645;
       font-weight: bold;
       margin-bottom: 15px;

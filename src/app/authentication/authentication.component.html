@@ -1,1 +1,5 @@
-<button class="authentication-button" (click)="authenticationHandler()">{{ isAutorized ? 'Sign out' : 'Google sign in' }}</button>
+<div class="authentication-container">
+  <span class="user-info">{{ displayName }}</span>
+  <button class="authentication-button"
+    (click)="authenticationHandler()">{{ isAutorized ? 'Sign out' : 'Google sign in' }}</button>
+</div>

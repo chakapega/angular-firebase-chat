@@ -23,9 +23,9 @@ export class AuthService {
 
   public signIn() {
     auth.signInWithPopup(googleAuthProvider).then(result => {
-      const { uid, email } = result.user;
+      const { uid, displayName } = result.user;
 
-      this.setUser({ uid, email });
+      this.setUser({ uid, displayName });
     });
   }
 
@@ -36,11 +36,11 @@ export class AuthService {
   private addAuthStateChangeHandler() {
     auth.onAuthStateChanged(result => {
       if (result) {
-        const { uid, email } = result;
+        const { uid, displayName } = result;
 
-        this.setUser({ uid, email });
+        this.setUser({ uid, displayName });
       } else {
-        this.setUser({ uid: '', email: '' });
+        this.setUser({ uid: '', displayName: '' });
       }
     });
   }

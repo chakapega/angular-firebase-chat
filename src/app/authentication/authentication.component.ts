@@ -8,7 +8,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
-  public isAutorized = false;
+  private isAutorized: boolean = false;
+  private displayName: string = '';
 
   constructor(private authService: AuthService) {}
 
@@ -37,8 +38,10 @@ export class AuthenticationComponent implements OnInit {
   private setUser(user) {
     if (user.uid) {
       this.isAutorized = true;
+      this.displayName = user.displayName;
     } else {
       this.isAutorized = false;
+      this.displayName = '';
     }
   }
 }

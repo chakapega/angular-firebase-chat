@@ -18,12 +18,12 @@ export class MessagesService {
     return this.subject.asObservable();
   }
 
-  public sendMessage(message, email): void {
+  public sendMessage(message, displayName): void {
     firestore
       .collection('messages')
       .doc()
       .set({
-        userEmail: email,
+        displayName: displayName,
         userMessage: message,
         messageTimeStamp: this.getTimeStamp()
       })

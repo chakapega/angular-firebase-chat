@@ -9,6 +9,7 @@ import { MessageSendingFormComponent } from './message-sending-form/message-send
 import { MessagesBoxComponent } from './messages-box/messages-box.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { MessageComponent } from './message/message.component';
+import { ActiveUsersComponent } from './active-users/active-users.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MessageComponent } from './message/message.component';
     MessageSendingFormComponent,
     MessagesBoxComponent,
     AuthenticationComponent,
-    MessageComponent
+    MessageComponent,
+    ActiveUsersComponent
   ],
   imports: [BrowserModule, FormsModule],
   providers: [AuthService, MessagesService],

@@ -1,14 +1,24 @@
-.authentication-button {
-  width: 120px;
-  height: 30px;
+.authentication-container {
+  display: flex;
+  align-items: center;
   margin-right: 50px;
-  color: #ffffff;
-  background-color: #8b9b95;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s linear;
-  cursor: pointer;
 
-  &:hover {
-    border: 1px solid rgba(255, 255, 255, 0.7);
+  .user-info {
+    color: #ffffff;
+    margin-right: 30px;
+  }
+  .authentication-button {
+    width: 120px;
+    height: 30px;
+    color: #ffffff;
+    background-color: #8b9b95;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
   }
 }
+

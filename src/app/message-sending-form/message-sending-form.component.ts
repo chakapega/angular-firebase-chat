@@ -12,7 +12,8 @@ import { User } from '../shared/interfaces';
 export class MessageSendingFormComponent implements OnInit {
   message: string;
   uid: string;
-  email: string;
+  displayName: string;
+  messageSendingInput: Element;
 
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
@@ -20,17 +21,32 @@ export class MessageSendingFormComponent implements OnInit {
     this.authService.getUser().subscribe((user: User) => {
       this.setUser(user);
     });
+
+    this.messageSendingInput = document.querySelector('#message-sending-input');
   }
 
   private sendMessage() {
-    if (this.uid) {
-      this.messagesService.sendMessage(this.message, this.email);
-      this.message = '';
+    if (this.uid && this.message) {
+      if (this.message.trim()) {
+        this.messagesService.sendMessage(this.message, this.displayName);
+        this.message = '';
+      }
     }
+  }
+
+  keyPressHandler(event) {
+    if (event.code === 'Enter' && !event.shiftKey) {
+      this.sendMessage();
+    }
+  }
+
+  clickHandler() {
+    this.sendMessage();
+    this.messageSendingInput.focus();
   }
 
   private setUser(user: User) {
     this.uid = user.uid;
-    this.email = user.email;
+    this.displayName = user.displayName;
   }
 }
