@@ -8,15 +8,7 @@ import { User } from '../shared/interfaces';
 @Injectable()
 export class AuthService {
   constructor() {
-    auth.onAuthStateChanged(result => {
-      if (result) {
-        const { uid, email } = result;
-
-        this.setUser({ uid, email });
-      } else {
-        this.setUser({ uid: '', email: '' });
-      }
-    });
+    this.addAuthStateChangeHandler();
   }
 
   private subject = new Subject<User>();
@@ -29,7 +21,7 @@ export class AuthService {
     return this.subject.asObservable();
   }
 
-  signIn() {
+  public signIn() {
     auth.signInWithPopup(googleAuthProvider).then(result => {
       const { uid, email } = result.user;
 
@@ -37,7 +29,19 @@ export class AuthService {
     });
   }
 
-  signOut() {
+  public signOut() {
     auth.signOut().then(() => {});
+  }
+
+  private addAuthStateChangeHandler() {
+    auth.onAuthStateChanged(result => {
+      if (result) {
+        const { uid, email } = result;
+
+        this.setUser({ uid, email });
+      } else {
+        this.setUser({ uid: '', email: '' });
+      }
+    });
   }
 }

@@ -12,21 +12,21 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.authService.getUser().subscribe(user => {
       this.setUser(user);
     });
   }
 
-  signIn() {
+  private signIn() {
     this.authService.signIn();
   }
 
-  signOut() {
+  private signOut() {
     this.authService.signOut();
   }
 
-  authenticationHandler() {
+  private authenticationHandler() {
     if (this.isAutorized) {
       this.signOut();
     } else {
@@ -34,7 +34,7 @@ export class AuthenticationComponent implements OnInit {
     }
   }
 
-  setUser(user) {
+  private setUser(user) {
     if (user.uid) {
       this.isAutorized = true;
     } else {

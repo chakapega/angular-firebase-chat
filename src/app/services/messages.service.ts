@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { firestore } from '../../firebase/firebase';
 
 @Injectable()
-export class MessageService {
+export class MessagesService {
   constructor() {
     this.getMessages();
   }

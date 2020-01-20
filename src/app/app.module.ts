@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
-import { MessageService } from './services/message.service';
+import { MessagesService } from './services/messages.service';
 import { MessageSendingFormComponent } from './message-sending-form/message-sending-form.component';
-import { MessageBoxComponent } from './message-box/message-box.component';
+import { MessagesBoxComponent } from './messages-box/messages-box.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { MessageComponent } from './message/message.component';
 
@@ -14,12 +14,12 @@ import { MessageComponent } from './message/message.component';
   declarations: [
     AppComponent,
     MessageSendingFormComponent,
-    MessageBoxComponent,
+    MessagesBoxComponent,
     AuthenticationComponent,
     MessageComponent
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [AuthService, MessageService],
+  providers: [AuthService, MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../services/auth.service';
-import { MessageService } from '../services/message.service';
+import { MessagesService } from '../services/messages.service';
 import { User } from '../shared/interfaces';
 
 @Component({
@@ -14,22 +14,22 @@ export class MessageSendingFormComponent implements OnInit {
   uid: string;
   email: string;
 
-  constructor(private authService: AuthService, private messageService: MessageService) {}
+  constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.authService.getUser().subscribe((user: User) => {
       this.setUser(user);
     });
   }
 
-  sendMessage() {
+  private sendMessage() {
     if (this.uid) {
-      this.messageService.sendMessage(this.message, this.email);
+      this.messagesService.sendMessage(this.message, this.email);
       this.message = '';
     }
   }
 
-  setUser(user: User) {
+  private setUser(user: User) {
     this.uid = user.uid;
     this.email = user.email;
   }
