@@ -13,7 +13,7 @@ export class MessagesBoxComponent implements OnInit {
   private arrayOfMessages: Array<object>;
   private messagesBox: any;
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.messagesService.getArrayOfMessages().subscribe(arrayOfMessages => {
       this.setArrayOfMessages(arrayOfMessages);
     });
@@ -21,11 +21,11 @@ export class MessagesBoxComponent implements OnInit {
     this.messagesBox = document.querySelector('.messages-box');
   }
 
-  private ngAfterViewChecked() {
+  private ngAfterViewChecked(): void {
     this.messagesBox.scrollTop = this.messagesBox.scrollHeight;
   }
 
-  private setArrayOfMessages(arrayOfMessages) {
+  private setArrayOfMessages(arrayOfMessages): void {
     this.arrayOfMessages = arrayOfMessages;
   }
 }

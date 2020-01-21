@@ -10,15 +10,15 @@ import { User } from '../shared/interfaces';
   styleUrls: ['./message-sending.component.scss']
 })
 export class MessageSendingComponent implements OnInit {
-  message: string;
-  uid: string;
-  email: string;
-  messageSendingInput: any;
-  placeholderText: string;
+  private message: string = '';
+  private uid: string = '';
+  private email: string = '';
+  private messageSendingInput: any;
+  private placeholderText: string = 'Sign in to write messages';
 
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.authService.getUser().subscribe((user: User) => {
       this.setUser(user);
     });
@@ -26,7 +26,7 @@ export class MessageSendingComponent implements OnInit {
     this.messageSendingInput = document.querySelector('#message-sending-input');
   }
 
-  private sendMessage() {
+  private sendMessage(): void {
     if (this.uid && this.message) {
       if (this.message.trim()) {
         this.messagesService.sendMessage(this.message, this.email);
@@ -35,18 +35,18 @@ export class MessageSendingComponent implements OnInit {
     }
   }
 
-  keyPressHandler(event) {
+  private keyPressHandler(event): void {
     if (event.code === 'Enter' && !event.shiftKey) {
       this.sendMessage();
     }
   }
 
-  clickHandler() {
+  private clickHandler(): void {
     this.sendMessage();
     this.messageSendingInput.focus();
   }
 
-  private setUser(user: User) {
+  private setUser(user: User): void {
     this.uid = user.uid;
     this.email = user.email;
 

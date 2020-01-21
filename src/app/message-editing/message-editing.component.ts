@@ -11,13 +11,13 @@ import { MessagesService } from '../services/messages.service';
 export class MessageEditingComponent implements OnInit {
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
-  message: string = '';
-  isEditing: boolean = false;
-  email: string = '';
-  emailAuthor: string = '';
-  id: string = '';
+  private message: string = '';
+  private isEditing: boolean = false;
+  private email: string = '';
+  private emailAuthor: string = '';
+  private id: string = '';
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
       this.setUser(user);
     });
@@ -26,7 +26,7 @@ export class MessageEditingComponent implements OnInit {
     });
   }
 
-  setEditableMessage(editableMessage) {
+  private setEditableMessage(editableMessage): void {
     const { id, email, message } = editableMessage;
 
     if (this.emailAuthor === email) {
@@ -37,7 +37,7 @@ export class MessageEditingComponent implements OnInit {
     }
   }
 
-  private setUser(user) {
+  private setUser(user): void {
     if (user.email) {
       this.emailAuthor = user.email;
     } else {
@@ -45,20 +45,20 @@ export class MessageEditingComponent implements OnInit {
     }
   }
 
-  private editMessage() {
+  private editMessage(): void {
     if (this.message.length) {
       this.messagesService.editMessage(this.id, this.message);
       this.isEditing = false;
     }
   }
 
-  keyPressHandler(event) {
+  private keyPressHandler(event): void {
     if (event.code === 'Enter' && !event.shiftKey) {
       this.editMessage();
     }
   }
 
-  clickHandler() {
+  private clickHandler(): void {
     this.editMessage();
   }
 }

@@ -11,17 +11,17 @@ export class AuthService {
     this.addAuthStateChangeHandler();
   }
 
-  private subject = new Subject<User>();
+  private observedUser = new Subject<User>();
 
   public setUser(user: User): void {
-    this.subject.next(user);
+    this.observedUser.next(user);
   }
 
   public getUser(): Observable<object> {
-    return this.subject.asObservable();
+    return this.observedUser.asObservable();
   }
 
-  public signIn() {
+  public signIn(): void {
     auth.signInWithPopup(googleAuthProvider).then(result => {
       const { uid, email, photoURL } = result.user;
 
@@ -29,11 +29,11 @@ export class AuthService {
     });
   }
 
-  public signOut() {
+  public signOut(): void {
     auth.signOut().then(() => {});
   }
 
-  private addAuthStateChangeHandler() {
+  private addAuthStateChangeHandler(): void {
     auth.onAuthStateChanged(result => {
       if (result) {
         const { uid, email, photoURL } = result;
