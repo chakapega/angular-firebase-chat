@@ -1,7 +1,6 @@
 <div class="message-sending-container">
   <input name="message" [disabled]="!uid" [(ngModel)]="message" [placeholder]="placeholderText" type="text"
-    id="message-sending-input" (keypress)="keyPressHandler($event)" (dragenter)="dragEnterHandler()"
-    maxlength="250">
+    id="message-sending-input" (keypress)="keyPressHandler($event)" (dragenter)="dragEnterHandler()" maxlength="400">
   <input *ngIf="isDraggedImage" id="image-sending-input" type="file" (drop)="dropHandler($event)"
     (dragleave)="dragLeaveHandler()">
   <button type="button" class="message-sending-button" (click)="clickHandler()">Send message</button>

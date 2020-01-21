@@ -3,7 +3,7 @@
     <span class="user-email">{{ message.email }}</span>
     <span class="time-stamp">{{ message.timeStamp }}</span>
   </div>
-  <span class="message">{{ message.message }}</span>
+  <span *ngIf="!message.imageUrl" class="message">{{ message.message }}</span>
   <div *ngIf="message.imageUrl" class="image-message-container">
     <img src="{{ message.imageUrl }}" alt="image-message" class="image-message">
   </div>
