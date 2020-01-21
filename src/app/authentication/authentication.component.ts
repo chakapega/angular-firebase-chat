@@ -14,21 +14,21 @@ export class AuthenticationComponent implements OnInit {
   private email: string = '';
   private photoURL: string = '';
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
       this.setUser(user);
     });
   }
 
-  private signIn() {
+  private signIn(): void {
     this.authService.signIn();
   }
 
-  private signOut() {
+  private signOut(): void {
     this.authService.signOut();
   }
 
-  private authenticationHandler() {
+  private authenticationHandler(): void {
     if (this.isAutorized) {
       this.signOut();
     } else {
@@ -36,7 +36,7 @@ export class AuthenticationComponent implements OnInit {
     }
   }
 
-  private setUser(user) {
+  private setUser(user): void {
     if (user.email) {
       this.isAutorized = true;
       this.email = user.email;

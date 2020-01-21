@@ -13,13 +13,19 @@ export class MessageComponent implements OnInit {
 
   @Input() message: Message;
 
-  public ngOnInit() {}
+  public ngOnInit(): void {}
 
-  private editMessage() {
-    console.log(this.message.id);
+  private editMessage(): void {
+    const editableMessage = {
+      id: this.message.id,
+      email: this.message.email,
+      message: this.message.message
+    };
+
+    this.messagesService.setEditableMessage(editableMessage);
   }
 
-  private removeMessage() {
+  private removeMessage(): void {
     this.messagesService.removeMessage(this.message.id, this.message.email);
   }
 }

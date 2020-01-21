@@ -15,6 +15,7 @@ export class MessagesService {
 
   private email: string = '';
   private subject = new Subject<Array<object>>();
+  private subject1 = new Subject<object>();
 
   public setArrayOfMessages(messages: Array<object>): void {
     this.subject.next(messages);
@@ -22,6 +23,14 @@ export class MessagesService {
 
   public getArrayOfMessages(): Observable<Array<object>> {
     return this.subject.asObservable();
+  }
+
+  public setEditableMessage(editableMessage: object): void {
+    this.subject1.next(editableMessage);
+  }
+
+  public getEditableMessage(): Observable<object> {
+    return this.subject1.asObservable();
   }
 
   public sendMessage(message, email): void {
@@ -54,6 +63,15 @@ export class MessagesService {
           console.error('Error removing document: ', error);
         });
     }
+  }
+
+  public editMessage(id, message) {
+    firestore
+      .collection('messages')
+      .doc(id)
+      .update({
+        message: message
+      });
   }
 
   private getMessages(): void {

@@ -10,6 +10,7 @@ import { MessagesBoxComponent } from './messages-box/messages-box.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { MessageComponent } from './message/message.component';
 import { ActiveUsersComponent } from './active-users/active-users.component';
+import { MessageEditingComponent } from './message-editing/message-editing.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ActiveUsersComponent } from './active-users/active-users.component';
     MessagesBoxComponent,
     AuthenticationComponent,
     MessageComponent,
-    ActiveUsersComponent
+    ActiveUsersComponent,
+    MessageEditingComponent
   ],
   imports: [BrowserModule, FormsModule],
   providers: [AuthService, MessagesService],
