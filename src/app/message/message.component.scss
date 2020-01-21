@@ -41,6 +41,25 @@
     padding: 10px;
     box-sizing: border-box;
   }
+  .image-message-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    width: 74%;
+    height: 100%;
+    left: 22%;
+    background-color: #ffffff;
+    box-sizing: border-box;
+
+    .image-message {
+      height: 90px;
+      width: auto;
+      margin-left: 10px;
+    }
+  }
+
   .message-control-buttons-container {
     position: absolute;
     width: 4%;

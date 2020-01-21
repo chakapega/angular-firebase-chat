@@ -45,10 +45,9 @@ export class MessageSendingComponent implements OnInit {
     }
   }
 
-  private clickHandler(): void | undefined {
+  private clickHandler(): void {
     if (this.isDraggedImage) {
       this.sendImage();
-      return;
     } else {
       this.sendMessage();
     }
@@ -69,21 +68,21 @@ export class MessageSendingComponent implements OnInit {
     }
   }
 
-  private dragEnterHandler() {
+  private dragEnterHandler(): void {
     this.isDraggedImage = true;
   }
 
-  private dragLeaveHandler() {
+  private dragLeaveHandler(): void {
     this.isDraggedImage = false;
   }
 
-  private dropHandler(event) {
+  private dropHandler(event): void {
     const file = event.dataTransfer.files[0];
 
     this.file = file;
   }
 
-  private sendImage() {
+  private sendImage(): void {
     const storageRef = storage.ref('images/' + this.file.name);
     const task = storageRef.put(this.file);
     const messagesService = this.messagesService;
@@ -95,8 +94,6 @@ export class MessageSendingComponent implements OnInit {
       function error() {},
       function complete() {
         task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          // this.imageUrl = downloadURL;
-          // console.log(downloadURL);
           messagesService.sendMessage('', email, downloadURL);
         });
       }

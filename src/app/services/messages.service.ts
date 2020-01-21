@@ -34,27 +34,15 @@ export class MessagesService {
   }
 
   public sendMessage(message, email, imageUrl): void {
-    console.log(imageUrl);
-    if (imageUrl) {
-      firestore
-        .collection('messages')
-        .doc()
-        .set({
-          email: email,
-          message: message,
-          timeStamp: this.getTimeStamp(),
-          imageUrl: imageUrl
-        });
-    } else {
-      firestore
-        .collection('messages')
-        .doc()
-        .set({
-          email: email,
-          message: message,
-          timeStamp: this.getTimeStamp()
-        });
-    }
+    firestore
+      .collection('messages')
+      .doc()
+      .set({
+        email: email,
+        message: message,
+        timeStamp: this.getTimeStamp(),
+        imageUrl: imageUrl
+      });
   }
 
   public removeMessage(id, email): void {

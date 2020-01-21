@@ -4,5 +4,5 @@
     maxlength="250">
   <input *ngIf="isDraggedImage" id="image-sending-input" type="file" (drop)="dropHandler($event)"
     (dragleave)="dragLeaveHandler()">
-  <button type="button" class="message-sending-button" (click)="clickHandler($event)">Send message</button>
+  <button type="button" class="message-sending-button" (click)="clickHandler()">Send message</button>
 </div>
