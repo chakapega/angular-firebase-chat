@@ -9,6 +9,8 @@
   align-items: center;
 
   #message-sending-input {
+    position: absolute;
+    left: 0;
     width: 84%;
     height: 100%;
     padding: 10px;
@@ -22,7 +24,21 @@
       border: 3px solid #75857f;
     }
   }
+  #image-sending-input {
+    position: absolute;
+    left: 0;
+    width: 84%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #c6cecb;
+    z-index: 2;
+    border: 3px dashed #75857f;
+  }
   .message-sending-button {
+    position: absolute;
+    right: 0;
     width: 16%;
     height: 100%;
     box-sizing: border-box;

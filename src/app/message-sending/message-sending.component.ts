@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { storage } from '../../firebase/firebase';
 import { AuthService } from '../services/auth.service';
 import { MessagesService } from '../services/messages.service';
 import { User } from '../shared/interfaces';
@@ -15,6 +16,9 @@ export class MessageSendingComponent implements OnInit {
   private email: string = '';
   private messageSendingInput: any;
   private placeholderText: string = 'Sign in to write messages';
+  private isDraggedImage: boolean = false;
+  private file: File;
+  private imageUrl: string = '';
 
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
@@ -29,7 +33,7 @@ export class MessageSendingComponent implements OnInit {
   private sendMessage(): void {
     if (this.uid && this.message) {
       if (this.message.trim()) {
-        this.messagesService.sendMessage(this.message, this.email);
+        this.messagesService.sendMessage(this.message, this.email, this.imageUrl);
         this.message = '';
       }
     }
@@ -41,9 +45,17 @@ export class MessageSendingComponent implements OnInit {
     }
   }
 
-  private clickHandler(): void {
-    this.sendMessage();
+  private clickHandler(): void | undefined {
+    if (this.isDraggedImage) {
+      this.sendImage();
+      return;
+    } else {
+      this.sendMessage();
+    }
+
+    this.isDraggedImage = false;
     this.messageSendingInput.focus();
+    this.imageUrl = '';
   }
 
   private setUser(user: User): void {
@@ -55,5 +67,39 @@ export class MessageSendingComponent implements OnInit {
     } else {
       this.placeholderText = 'Sign in to write messages';
     }
+  }
+
+  private dragEnterHandler() {
+    this.isDraggedImage = true;
+  }
+
+  private dragLeaveHandler() {
+    this.isDraggedImage = false;
+  }
+
+  private dropHandler(event) {
+    const file = event.dataTransfer.files[0];
+
+    this.file = file;
+  }
+
+  private sendImage() {
+    const storageRef = storage.ref('images/' + this.file.name);
+    const task = storageRef.put(this.file);
+    const messagesService = this.messagesService;
+    const email = this.email;
+
+    task.on(
+      'state_changed',
+      function progress() {},
+      function error() {},
+      function complete() {
+        task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          // this.imageUrl = downloadURL;
+          // console.log(downloadURL);
+          messagesService.sendMessage('', email, downloadURL);
+        });
+      }
+    );
   }
 }

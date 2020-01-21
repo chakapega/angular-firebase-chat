@@ -4,6 +4,7 @@
     <span class="time-stamp">{{ message.timeStamp }}</span>
   </div>
   <span class="message">{{ message.message }}</span>
+  <img *ngIf="message.imageUrl" src="{{ message.imageUrl }}" alt="user-photo" class="image-message">
   <div class="message-control-buttons-container">
     <button type="button" class="message-control-button edit-message-button" title="edit message"
       (click)="editMessage()"></button>

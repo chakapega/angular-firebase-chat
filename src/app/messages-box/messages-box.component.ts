@@ -8,7 +8,9 @@ import { MessagesService } from '../services/messages.service';
   styleUrls: ['./messages-box.component.scss']
 })
 export class MessagesBoxComponent implements OnInit {
-  constructor(private messagesService: MessagesService) {}
+  constructor(private messagesService: MessagesService) {
+    
+  }
 
   private arrayOfMessages: Array<object>;
   private messagesBox: any;

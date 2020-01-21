@@ -7,4 +7,5 @@ export interface Message {
   email: string;
   message: string;
   id: string;
+  imageUrl: string
 }
