@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 
 import { MessagesService } from '../services/messages.service';
 
@@ -7,7 +7,7 @@ import { MessagesService } from '../services/messages.service';
   templateUrl: './messages-box.component.html',
   styleUrls: ['./messages-box.component.scss']
 })
-export class MessagesBoxComponent implements OnInit {
+export class MessagesBoxComponent implements OnInit, AfterViewChecked {
   constructor(private messagesService: MessagesService) {}
 
   private arrayOfMessages: Array<object>;
@@ -21,7 +21,7 @@ export class MessagesBoxComponent implements OnInit {
     this.messagesBox = document.querySelector('.messages-box');
   }
 
-  private ngAfterViewChecked(): void {
+  public ngAfterViewChecked(): void {
     this.messagesBox.scrollTop = this.messagesBox.scrollHeight;
   }
 

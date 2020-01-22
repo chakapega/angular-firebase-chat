@@ -10,9 +10,9 @@ import { AuthService } from '../services/auth.service';
 export class AuthenticationComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
-  private isAutorized: boolean = false;
-  private displayName: string = '';
-  private photoURL: string = '';
+  private isAutorized = false;
+  private displayName = '';
+  private photoURL = '';
 
   public ngOnInit(): void {
     this.authService.getUser().subscribe(user => {

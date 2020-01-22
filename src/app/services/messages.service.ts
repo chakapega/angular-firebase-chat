@@ -13,8 +13,8 @@ export class MessagesService {
     this.getMessages();
   }
 
-  private displayName: string = '';
-  private uid: string = '';
+  private displayName = '';
+  private uid = '';
   private observedArrayOfMessages = new Subject<Array<object>>();
   private observedEditableMessage = new Subject<object>();
 
@@ -39,16 +39,16 @@ export class MessagesService {
       .collection('messages')
       .doc()
       .set({
-        displayName: displayName,
-        message: message,
+        displayName,
+        message,
         timeStamp: this.getTimeStamp(),
-        imageUrl: imageUrl,
+        imageUrl,
         uid: this.uid
       });
   }
 
-  public removeMessage(id, displayName): void {
-    if (this.displayName === displayName) {
+  public removeMessage(id, uid): void {
+    if (this.uid === uid) {
       firestore
         .collection('messages')
         .doc(id)
@@ -61,7 +61,7 @@ export class MessagesService {
       .collection('messages')
       .doc(id)
       .update({
-        message: message
+        message
       });
   }
 

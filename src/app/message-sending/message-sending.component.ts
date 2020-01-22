@@ -11,14 +11,14 @@ import { User } from '../shared/interfaces';
   styleUrls: ['./message-sending.component.scss']
 })
 export class MessageSendingComponent implements OnInit {
-  private message: string = '';
-  private uid: string = '';
-  private displayName: string = '';
+  private message = '';
+  private uid = '';
+  private displayName = '';
   private messageSendingInput: any;
-  private placeholderText: string = 'Sign in to write messages';
-  private isDraggedImage: boolean = false;
+  private placeholderText = 'Sign in to write messages';
+  private isDraggedImage = false;
   private file: File;
-  private imageUrl: string = '';
+  private imageUrl = '';
 
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
@@ -93,7 +93,7 @@ export class MessageSendingComponent implements OnInit {
       function progress() {},
       function error() {},
       function complete() {
-        task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        task.snapshot.ref.getDownloadURL().then(downloadURL => {
           messagesService.sendMessage('', displayName, downloadURL);
         });
       }

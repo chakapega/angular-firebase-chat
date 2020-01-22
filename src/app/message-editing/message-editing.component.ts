@@ -11,11 +11,11 @@ import { MessagesService } from '../services/messages.service';
 export class MessageEditingComponent implements OnInit {
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
-  private message: string = '';
-  private isEditing: boolean = false;
-  private displayName: string = '';
-  private uidAuthor: string = '';
-  private id: string = '';
+  private message = '';
+  private isEditing = false;
+  private displayName = '';
+  private uidAuthor = '';
+  private id = '';
 
   public ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
