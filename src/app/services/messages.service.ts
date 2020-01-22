@@ -76,7 +76,9 @@ export class MessagesService {
         querySnapshot.forEach(doc => {
           const message = doc.data();
 
-          if (message.uid === this.uid) message.isAuthor = true;
+          if (message.uid === this.uid) {
+            message.isAuthor = true;
+          }
           message.id = doc.id;
           messages.push(message);
         });

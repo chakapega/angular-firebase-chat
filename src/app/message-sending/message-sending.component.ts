@@ -62,7 +62,7 @@ export class MessageSendingComponent implements OnInit {
     this.displayName = user.displayName;
 
     if (user.displayName) {
-      this.placeholderText = 'Write a text to send a message';
+      this.placeholderText = 'Type the message text or drag the image to send to the input field';
     } else {
       this.placeholderText = 'Sign in to write messages';
     }
