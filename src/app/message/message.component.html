@@ -9,9 +9,9 @@
     <img src="{{ message.imageUrl }}" alt="image-message" class="image-message" (load)="imageloadHandler()">
   </div>
   <div class="message-control-buttons-container">
-    <button *ngIf="!message.imageUrl" type="button" class="message-control-button edit-message-button"
-      title="edit message" (click)="editMessage()"></button>
-    <button type="button" class="message-control-button remove-message-button" title="remove message"
-      (click)="removeMessage()"></button>
+    <button *ngIf="!message.imageUrl && message.isAuthor" type="button"
+      class="message-control-button edit-message-button" title="edit message" (click)="editMessage()"></button>
+    <button *ngIf="message.isAuthor" type="button" class="message-control-button remove-message-button"
+      title="remove message" (click)="removeMessage()"></button>
   </div>
 </div>

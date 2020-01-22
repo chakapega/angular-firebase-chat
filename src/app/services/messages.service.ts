@@ -43,7 +43,8 @@ export class MessagesService {
         message,
         timeStamp: this.getTimeStamp(),
         imageUrl,
-        uid: this.uid
+        uid: this.uid,
+        isAuthor: false
       });
   }
 
@@ -75,6 +76,7 @@ export class MessagesService {
         querySnapshot.forEach(doc => {
           const message = doc.data();
 
+          if (message.uid === this.uid) message.isAuthor = true;
           message.id = doc.id;
           messages.push(message);
         });
@@ -98,5 +100,7 @@ export class MessagesService {
       this.displayName = '';
       this.uid = '';
     }
+
+    this.getMessages();
   }
 }

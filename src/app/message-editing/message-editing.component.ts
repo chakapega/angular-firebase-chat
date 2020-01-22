@@ -13,7 +13,6 @@ export class MessageEditingComponent implements OnInit {
 
   public message = '';
   public isEditing = false;
-  private displayName = '';
   private uidAuthor = '';
   private id = '';
 
@@ -38,7 +37,7 @@ export class MessageEditingComponent implements OnInit {
   }
 
   private setUser(user): void {
-    if (user.displayName) {
+    if (user.uid) {
       this.uidAuthor = user.uid;
     } else {
       this.uidAuthor = '';
