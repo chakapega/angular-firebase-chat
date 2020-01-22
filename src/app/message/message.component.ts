@@ -18,7 +18,7 @@ export class MessageComponent implements OnInit {
   private editMessage(): void {
     const editableMessage = {
       id: this.message.id,
-      email: this.message.email,
+      uid: this.message.uid,
       message: this.message.message
     };
 
@@ -26,6 +26,6 @@ export class MessageComponent implements OnInit {
   }
 
   private removeMessage(): void {
-    this.messagesService.removeMessage(this.message.id, this.message.email);
+    this.messagesService.removeMessage(this.message.id, this.message.displayName);
   }
 }

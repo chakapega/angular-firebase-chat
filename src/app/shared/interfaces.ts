@@ -4,8 +4,9 @@ export interface User {
   photoURL: string;
 }
 export interface Message {
-  email: string;
+  displayName: string;
   message: string;
   id: string;
-  imageUrl: string
+  imageUrl: string;
+  uid: string;
 }

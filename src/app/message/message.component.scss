@@ -16,16 +16,24 @@
     overflow: hidden;
     border-right: 1px solid #8e9e98;
 
-    .user-email {
+    .user-name {
       color: #364645;
       font-weight: bold;
       overflow-wrap: break-word;
-      padding: 8px;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+    .user-uid {
+      color: #364645;
+      font-size: 7px;
+      margin-top: 5px;
+      margin-left: 10px;
     }
     .time-stamp {
       color: #555555;
       font-style: italic;
-      padding: 8px;
+      margin-top: 5px;
+      margin-left: 10px;
     }
   }
   .message {

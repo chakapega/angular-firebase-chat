@@ -13,7 +13,8 @@ export class MessagesService {
     this.getMessages();
   }
 
-  private email: string = '';
+  private displayName: string = '';
+  private uid: string = '';
   private observedArrayOfMessages = new Subject<Array<object>>();
   private observedEditableMessage = new Subject<object>();
 
@@ -33,20 +34,21 @@ export class MessagesService {
     return this.observedEditableMessage.asObservable();
   }
 
-  public sendMessage(message, email, imageUrl): void {
+  public sendMessage(message, displayName, imageUrl): void {
     firestore
       .collection('messages')
       .doc()
       .set({
-        email: email,
+        displayName: displayName,
         message: message,
         timeStamp: this.getTimeStamp(),
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        uid: this.uid
       });
   }
 
-  public removeMessage(id, email): void {
-    if (this.email === email) {
+  public removeMessage(id, displayName): void {
+    if (this.displayName === displayName) {
       firestore
         .collection('messages')
         .doc(id)
@@ -89,10 +91,12 @@ export class MessagesService {
   }
 
   private setUser(user): void {
-    if (user.email) {
-      this.email = user.email;
+    if (user.displayName) {
+      this.displayName = user.displayName;
+      this.uid = user.uid;
     } else {
-      this.email = '';
+      this.displayName = '';
+      this.uid = '';
     }
   }
 }

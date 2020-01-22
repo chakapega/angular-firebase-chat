@@ -24,14 +24,12 @@ export class AuthService {
   public signIn(authProvider): void {
     if (authProvider === 'google') {
       auth.signInWithPopup(googleAuthProvider).then(result => {
-        // console.log(result);
         const { uid, displayName, photoURL } = result.user;
 
         this.setUser({ uid, displayName, photoURL });
       });
     } else if (authProvider === 'github') {
       auth.signInWithPopup(githubAuthProvider).then(result => {
-        // console.log(result);
         const { uid, displayName, photoURL } = result.user;
 
         this.setUser({ uid, displayName, photoURL });

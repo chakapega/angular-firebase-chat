@@ -13,7 +13,7 @@ import { User } from '../shared/interfaces';
 export class MessageSendingComponent implements OnInit {
   private message: string = '';
   private uid: string = '';
-  private email: string = '';
+  private displayName: string = '';
   private messageSendingInput: any;
   private placeholderText: string = 'Sign in to write messages';
   private isDraggedImage: boolean = false;
@@ -33,7 +33,7 @@ export class MessageSendingComponent implements OnInit {
   private sendMessage(): void {
     if (this.uid && this.message) {
       if (this.message.trim()) {
-        this.messagesService.sendMessage(this.message, this.email, this.imageUrl);
+        this.messagesService.sendMessage(this.message, this.displayName, this.imageUrl);
         this.message = '';
       }
     }
@@ -59,9 +59,9 @@ export class MessageSendingComponent implements OnInit {
 
   private setUser(user: User): void {
     this.uid = user.uid;
-    this.email = user.email;
+    this.displayName = user.displayName;
 
-    if (user.uid) {
+    if (user.displayName) {
       this.placeholderText = 'Write a text to send a message';
     } else {
       this.placeholderText = 'Sign in to write messages';
@@ -86,7 +86,7 @@ export class MessageSendingComponent implements OnInit {
     const storageRef = storage.ref('images/' + this.file.name);
     const task = storageRef.put(this.file);
     const messagesService = this.messagesService;
-    const email = this.email;
+    const displayName = this.displayName;
 
     task.on(
       'state_changed',
@@ -94,7 +94,7 @@ export class MessageSendingComponent implements OnInit {
       function error() {},
       function complete() {
         task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          messagesService.sendMessage('', email, downloadURL);
+          messagesService.sendMessage('', displayName, downloadURL);
         });
       }
     );

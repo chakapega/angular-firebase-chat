@@ -13,8 +13,8 @@ export class MessageEditingComponent implements OnInit {
 
   private message: string = '';
   private isEditing: boolean = false;
-  private email: string = '';
-  private emailAuthor: string = '';
+  private displayName: string = '';
+  private uidAuthor: string = '';
   private id: string = '';
 
   public ngOnInit(): void {
@@ -27,21 +27,21 @@ export class MessageEditingComponent implements OnInit {
   }
 
   private setEditableMessage(editableMessage): void {
-    const { id, email, message } = editableMessage;
+    const { id, uid, message } = editableMessage;
 
-    if (this.emailAuthor === email) {
+    if (this.uidAuthor === uid) {
       this.id = id;
-      this.emailAuthor = email;
+      this.uidAuthor = uid;
       this.message = message;
       this.isEditing = true;
     }
   }
 
   private setUser(user): void {
-    if (user.email) {
-      this.emailAuthor = user.email;
+    if (user.displayName) {
+      this.uidAuthor = user.uid;
     } else {
-      this.emailAuthor = '';
+      this.uidAuthor = '';
     }
   }
 
