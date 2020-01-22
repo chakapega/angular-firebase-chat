@@ -28,4 +28,6 @@ export class MessageComponent implements OnInit {
   public removeMessage(): void {
     this.messagesService.removeMessage(this.message.id, this.message.uid);
   }
+
+  public imageloadHandler(): void {}
 }

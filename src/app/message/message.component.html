@@ -6,7 +6,7 @@
   </div>
   <span *ngIf="!message.imageUrl" class="message">{{ message.message }}</span>
   <div *ngIf="message.imageUrl" class="image-message-container">
-    <img src="{{ message.imageUrl }}" alt="image-message" class="image-message">
+    <img src="{{ message.imageUrl }}" alt="image-message" class="image-message" (load)="imageloadHandler()">
   </div>
   <div class="message-control-buttons-container">
     <button *ngIf="!message.imageUrl" type="button" class="message-control-button edit-message-button"
