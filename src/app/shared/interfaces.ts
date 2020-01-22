@@ -10,4 +10,5 @@ export interface Message {
   imageUrl: string;
   uid: string;
   timeStamp: string;
+  isAuthor: boolean;
 }
