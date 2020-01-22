@@ -10,9 +10,9 @@ import { AuthService } from '../services/auth.service';
 export class AuthenticationComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
-  private isAutorized = false;
-  private displayName = '';
-  private photoURL = '';
+  public isAutorized = false;
+  public displayName = '';
+  public photoURL = '';
 
   public ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
@@ -24,11 +24,11 @@ export class AuthenticationComponent implements OnInit {
     this.authService.signIn(authProvider);
   }
 
-  private signOut(): void {
+  public signOut(): void {
     this.authService.signOut();
   }
 
-  private authenticationHandler(event): void {
+  public authenticationHandler(event): void {
     if (this.isAutorized) {
       this.signOut();
     } else {

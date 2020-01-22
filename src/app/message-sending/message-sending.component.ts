@@ -11,12 +11,12 @@ import { User } from '../shared/interfaces';
   styleUrls: ['./message-sending.component.scss']
 })
 export class MessageSendingComponent implements OnInit {
-  private message = '';
-  private uid = '';
+  public message = '';
+  public uid = '';
   private displayName = '';
   private messageSendingInput: any;
-  private placeholderText = 'Sign in to write messages';
-  private isDraggedImage = false;
+  public placeholderText = 'Sign in to write messages';
+  public isDraggedImage = false;
   private file: File;
   private imageUrl = '';
 
@@ -39,13 +39,13 @@ export class MessageSendingComponent implements OnInit {
     }
   }
 
-  private keyPressHandler(event): void {
+  public keyPressHandler(event): void {
     if (event.code === 'Enter' && !event.shiftKey) {
       this.sendMessage();
     }
   }
 
-  private clickHandler(): void {
+  public clickHandler(): void {
     if (this.isDraggedImage) {
       this.sendImage();
     } else {
@@ -68,15 +68,15 @@ export class MessageSendingComponent implements OnInit {
     }
   }
 
-  private dragEnterHandler(): void {
+  public dragEnterHandler(): void {
     this.isDraggedImage = true;
   }
 
-  private dragLeaveHandler(): void {
+  public dragLeaveHandler(): void {
     this.isDraggedImage = false;
   }
 
-  private dropHandler(event): void {
+  public dropHandler(event): void {
     const file = event.dataTransfer.files[0];
 
     this.file = file;

@@ -1,5 +1,5 @@
 <div *ngIf="isEditing" class="message-editing-container">
   <textarea name="message" [(ngModel)]="message" id="message-editing-textarea" (keypress)="keyPressHandler($event)"
     maxlength="500"></textarea>
-  <button type="button" class="message-editing-button" (click)="clickHandler($event)">Edit message</button>
+  <button type="button" class="message-editing-button" (click)="clickHandler()">Edit message</button>
 </div>

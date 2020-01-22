@@ -10,7 +10,7 @@ import { MessagesService } from '../services/messages.service';
 export class MessagesBoxComponent implements OnInit, AfterViewChecked {
   constructor(private messagesService: MessagesService) {}
 
-  private arrayOfMessages: Array<object>;
+  public arrayOfMessages: Array<object>;
   private messagesBox: any;
 
   public ngOnInit(): void {

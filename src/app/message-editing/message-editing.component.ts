@@ -11,8 +11,8 @@ import { MessagesService } from '../services/messages.service';
 export class MessageEditingComponent implements OnInit {
   constructor(private authService: AuthService, private messagesService: MessagesService) {}
 
-  private message = '';
-  private isEditing = false;
+  public message = '';
+  public isEditing = false;
   private displayName = '';
   private uidAuthor = '';
   private id = '';
@@ -52,13 +52,13 @@ export class MessageEditingComponent implements OnInit {
     }
   }
 
-  private keyPressHandler(event): void {
+  public keyPressHandler(event): void {
     if (event.code === 'Enter' && !event.shiftKey) {
       this.editMessage();
     }
   }
 
-  private clickHandler(): void {
+  public clickHandler(): void {
     this.editMessage();
   }
 }

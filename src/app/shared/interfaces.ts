@@ -9,4 +9,5 @@ export interface Message {
   id: string;
   imageUrl: string;
   uid: string;
+  timeStamp: string;
 }

@@ -15,7 +15,7 @@ export class MessageComponent implements OnInit {
 
   public ngOnInit(): void {}
 
-  private editMessage(): void {
+  public editMessage(): void {
     const editableMessage = {
       id: this.message.id,
       uid: this.message.uid,
@@ -25,7 +25,7 @@ export class MessageComponent implements OnInit {
     this.messagesService.setEditableMessage(editableMessage);
   }
 
-  private removeMessage(): void {
+  public removeMessage(): void {
     this.messagesService.removeMessage(this.message.id, this.message.uid);
   }
 }
