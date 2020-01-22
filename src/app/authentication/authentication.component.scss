@@ -18,7 +18,26 @@
       color: #ffffff;
     }
   }
-  .authentication-button {
+  .auth-buttons-container {
+    .auth-button {
+      width: 32px;
+      height: 32px;
+      margin: 8px;
+      padding: 0;
+      background-size: cover;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      &_github {
+        background-image: url(../../assets/images/auth_service_github.svg);
+      }
+      &_google {
+        background-image: url(../../assets/images/auth_service_google.svg);
+      }
+    }
+  }
+  .sign-out-button {
     width: 120px;
     height: 30px;
     color: #ffffff;
@@ -33,4 +52,3 @@
     }
   }
 }
-

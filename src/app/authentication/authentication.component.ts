@@ -11,7 +11,7 @@ export class AuthenticationComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   private isAutorized: boolean = false;
-  private email: string = '';
+  private displayName: string = '';
   private photoURL: string = '';
 
   public ngOnInit(): void {
@@ -20,30 +20,30 @@ export class AuthenticationComponent implements OnInit {
     });
   }
 
-  private signIn(): void {
-    this.authService.signIn();
+  private signIn(authProvider): void {
+    this.authService.signIn(authProvider);
   }
 
   private signOut(): void {
     this.authService.signOut();
   }
 
-  private authenticationHandler(): void {
+  private authenticationHandler(event): void {
     if (this.isAutorized) {
       this.signOut();
     } else {
-      this.signIn();
+      this.signIn(event.target.name);
     }
   }
 
   private setUser(user): void {
-    if (user.email) {
+    if (user.displayName) {
       this.isAutorized = true;
-      this.email = user.email;
+      this.displayName = user.displayName;
       this.photoURL = user.photoURL;
     } else {
       this.isAutorized = false;
-      this.email = '';
+      this.displayName = '';
       this.photoURL = '';
     }
   }

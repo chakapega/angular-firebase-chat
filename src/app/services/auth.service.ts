@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { auth, googleAuthProvider } from '../../firebase/firebase';
+import { auth, googleAuthProvider, githubAuthProvider } from '../../firebase/firebase';
 
 import { User } from '../shared/interfaces';
 
@@ -21,12 +21,22 @@ export class AuthService {
     return this.observedUser.asObservable();
   }
 
-  public signIn(): void {
-    auth.signInWithPopup(googleAuthProvider).then(result => {
-      const { uid, email, photoURL } = result.user;
+  public signIn(authProvider): void {
+    if (authProvider === 'google') {
+      auth.signInWithPopup(googleAuthProvider).then(result => {
+        // console.log(result);
+        const { uid, displayName, photoURL } = result.user;
 
-      this.setUser({ uid, email, photoURL });
-    });
+        this.setUser({ uid, displayName, photoURL });
+      });
+    } else if (authProvider === 'github') {
+      auth.signInWithPopup(githubAuthProvider).then(result => {
+        // console.log(result);
+        const { uid, displayName, photoURL } = result.user;
+
+        this.setUser({ uid, displayName, photoURL });
+      });
+    }
   }
 
   public signOut(): void {
@@ -36,11 +46,11 @@ export class AuthService {
   private addAuthStateChangeHandler(): void {
     auth.onAuthStateChanged(result => {
       if (result) {
-        const { uid, email, photoURL } = result;
+        const { uid, displayName, photoURL } = result;
 
-        this.setUser({ uid, email, photoURL });
+        this.setUser({ uid, displayName, photoURL });
       } else {
-        this.setUser({ uid: '', email: '', photoURL: '' });
+        this.setUser({ uid: '', displayName: '', photoURL: '' });
       }
     });
   }
